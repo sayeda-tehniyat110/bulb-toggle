@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    * {
+* {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -11,277 +11,121 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0a0a0f;
-      font-family: 'Orbitron', monospace;
-      transition: background 0.5s ease;
+      background-color: #f0e6ff;
+      font-family: 'Poppins', sans-serif;
     }
 
-    /* Hidden checkbox — yeh magic ka raaz hai */
     #toggle {
       display: none;
     }
 
-    .container {
+    /* Card */
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 50px 60px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 40px;
+      gap: 24px;
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.12);
+      width: 320px;
     }
 
-    /* ===== BULB ===== */
+    h1 {
+      font-size: 20px;
+      color: #7c3aed;
+      font-weight: 700;
+    }
+
+    /* Bulb */
     .bulb-wrap {
-      position: relative;
-      width: 120px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Glow ring jab ON ho */
-    .bulb-wrap::before {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 220, 50, 0) 30%, transparent 70%);
-      transition: all 0.5s ease;
-      pointer-events: none;
-    }
-
-    /* Bulb glass */
     .bulb {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: 50% 50% 40% 40%;
-      background: radial-gradient(circle at 40% 35%, #2a2a2a, #111 60%);
-      border: 3px solid #333;
-      position: relative;
-      transition: all 0.4s ease;
-      box-shadow: 0 0 0px transparent;
+      background-color: #e0e0e0;
+      border: 3px solid #ccc;
+      transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
 
-    /* Bulb ke andar shine highlight */
-    .bulb::before {
-      content: '';
-      position: absolute;
-      top: 18px;
-      left: 22px;
-      width: 25px;
-      height: 35px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-      transform: rotate(-30deg);
-      transition: background 0.4s ease;
-    }
-
-    /* Filament */
-    .bulb::after {
-      content: '';
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 22px;
-      height: 22px;
-      border: 2px solid #444;
-      border-radius: 50%;
-      border-top-color: transparent;
-      border-bottom-color: transparent;
-      box-shadow: 0 0 0 2px transparent;
-      transition: all 0.4s ease;
-    }
-
-    /* Bulb ka neeche ka hissa (cap) */
     .bulb-cap {
-      width: 40px;
-      height: 18px;
-      background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
-      border: 2px solid #333;
-      border-top: none;
-      border-radius: 0 0 6px 6px;
-      position: relative;
+      width: 44px;
+      height: 20px;
+      background-color: #bbb;
+      border-radius: 0 0 8px 8px;
     }
 
-    .bulb-cap::after {
-      content: '';
-      display: block;
-      width: 34px;
-      height: 5px;
-      background: #222;
-      border: 1px solid #333;
-      margin: 4px auto 0;
-      border-radius: 2px;
-    }
-
-    /* Wire */
     .wire {
       width: 3px;
-      height: 50px;
-      background: linear-gradient(to bottom, #333, #222);
-      border-radius: 2px;
+      height: 40px;
+      background-color: #bbb;
     }
 
-    /* ===== ON STATE — checkbox checked hone par ===== */
-
-    #toggle:checked ~ .container .bulb-wrap::before {
-      background: radial-gradient(circle, rgba(255, 220, 50, 0.35) 20%, rgba(255,180,0,0.1) 55%, transparent 75%);
-      width: 200px;
-      height: 200px;
-      top: -30px;
+    /* Status */
+    .status {
+      font-size: 18px;
+      font-weight: 600;
+      color: #bbb;
+      letter-spacing: 3px;
     }
 
-    #toggle:checked ~ .container .bulb {
-      background: radial-gradient(circle at 40% 35%, #fffde0, #ffe066 45%, #ffc107 75%);
-      border-color: #ffcc00;
-      box-shadow:
-        0 0 25px 10px rgba(255, 220, 50, 0.6),
-        0 0 60px 20px rgba(255, 180, 0, 0.35),
-        inset 0 0 20px rgba(255,255,200,0.4);
-    }
-
-    #toggle:checked ~ .container .bulb::before {
-      background: rgba(255, 255, 255, 0.35);
-    }
-
-    #toggle:checked ~ .container .bulb::after {
-      border-color: #ff9800;
-      box-shadow: 0 0 8px 2px rgba(255, 180, 0, 0.7);
-    }
-
-    /* Body background ON hone par thoda roshan */
-    #toggle:checked ~ .container {
-      filter: none;
-    }
-
-    /* Page background glow */
-    #toggle:checked ~ .container ~ .bg-light {
-      opacity: 1;
-    }
-
-    /* ===== BUTTON ===== */
+    /* Switch */
     .btn-label {
       cursor: pointer;
-      position: relative;
     }
 
-    /* Switch track */
     .switch-track {
       width: 80px;
-      height: 36px;
-      background: #1c1c1c;
-      border: 2px solid #333;
+      height: 38px;
+      background-color: #ddd;
       border-radius: 20px;
       position: relative;
-      transition: all 0.4s ease;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      padding: 0 4px;
+      transition: background-color 0.3s;
     }
 
-    /* Switch knob */
     .switch-track::after {
-      content: '';
-      width: 26px;
-      height: 26px;
-      background: linear-gradient(135deg, #444, #222);
+      content: 'OFF';
+      width: 30px;
+      height: 30px;
+      background-color: white;
       border-radius: 50%;
       position: absolute;
-      left: 3px;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-      border: 1px solid #555;
+      top: 4px;
+      left: 4px;
+      transition: left 0.3s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      font-size: 7px;
+      font-weight: 700;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Switch OFF label */
-    .switch-text {
-      width: 100%;
-      text-align: right;
-      padding-right: 10px;
-      font-size: 9px;
-      letter-spacing: 2px;
-      color: #444;
-      font-family: 'Orbitron', monospace;
-      transition: all 0.4s ease;
-      user-select: none;
+    /* ON states */
+    #toggle:checked ~ .card .bulb {
+      background-color: #ffe600;
+      border-color: #f0a500;
+      box-shadow: 0 0 30px #ffe60099, 0 0 60px #ffe60033;
     }
 
-    /* ON state switch */
-    #toggle:checked ~ .container .switch-track {
-      background: #1a1200;
-      border-color: #ffcc00;
-      box-shadow:
-        inset 0 2px 8px rgba(0,0,0,0.4),
-        0 0 12px 3px rgba(255, 200, 0, 0.25);
+    #toggle:checked ~ .card .status {
+      color: #f0a500;
     }
 
-    #toggle:checked ~ .container .switch-track::after {
-      left: calc(100% - 29px);
-      background: linear-gradient(135deg, #ffe066, #ffa000);
-      box-shadow:
-        0 0 10px 3px rgba(255, 200, 0, 0.6),
-        0 2px 6px rgba(0,0,0,0.4);
-      border-color: #ffcc00;
+    #toggle:checked ~ .card .switch-track {
+      background-color: #7c3aed;
     }
 
-    #toggle:checked ~ .container .switch-text {
-      text-align: left;
-      padding-left: 10px;
-      padding-right: 0;
-      color: #ffcc00;
-    }
-
-    /* Status text */
-    .status {
-      font-size: 11px;
-      letter-spacing: 4px;
-      color: #333;
-      text-transform: uppercase;
-      transition: all 0.4s ease;
-    }
-
-    #toggle:checked ~ .container .status {
-      color: #ffcc00;
-      text-shadow: 0 0 10px rgba(255, 200, 0, 0.6);
-    }
-
-    /* Page ka background pulse ON par */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 30%, rgba(255,200,0,0.07) 0%, transparent 65%);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    #toggle:checked ~ body::after {
-      opacity: 1;
-    }
-
-    /* Yeh trick page background ke liye — sibling selector workaround */
-    #toggle:checked + .page-bg {
-      opacity: 1;
-    }
-
-    .page-bg {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 20%, rgba(255,200,0,0.06) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
+    #toggle:checked ~ .card .switch-track::after {
+      content: 'ON';
+      left: 46px;
+      color: #7c3aed;
     }
